@@ -1,0 +1,16 @@
+
+Installed: bundler (1.17.3), ruby (2.3.1p112), gem (3.0.8)
+compress: tar -cvzf 'blog.tgz' blog
+scp blog.tgz "User@IP_Address":'~/'"blog.tgz"
+decompress: tar -xzf ~/blog.tgz -C ~/
+cd ~/blog
+Visit: https://cloudwafer.com/blog/installing-ruby-on-ubuntu-16-18/
+Visit: https://github.com/rvm/rvm#ubuntu
+gem install bundler:1.14.1
+apt-get install ruby-dev make gcc g++ sqlite3 libsqlite3-dev zlib1g zlib1g-dev tzdata
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+bundle install
+cp -r vendor/bundle/ruby/2.3.0/* /usr/share/rvm/gems/ruby-2.3.1@fmcc_01/
+rails generate migration AddOnlineToPosts online:boolean
+rails db:migrate RAILS_ENV=development
